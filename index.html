@@ -1,127 +1,285 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>100 razones por las que te amo 💍</title>
+<title>100 razones por las que te amo</title>
 
 <style>
 body{
-margin:0;
-min-height:100vh;
-font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#eaf8ff,#c8e8ff,#b8dcff);
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
+  margin:0;
+  min-height:100vh;
+  font-family: Georgia, serif;
+  background:#dff4ff;
+  overflow-x:hidden;
+  color:#315177;
 }
 
-.card{
-background:rgba(255,255,255,.9);
-padding:25px;
-border-radius:25px;
-width:85%;
-max-width:420px;
-box-shadow:0 0 20px rgba(168,216,255,.8);
-color:#3b4f7a;
+.fondo{
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%, #ffffff55 0 2px, transparent 3px),
+    linear-gradient(135deg,#eaf9ff,#cceeff,#b9e4ff);
+  background-size:35px 35px, cover;
+  z-index:-2;
+}
+
+.decoracion{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  opacity:.45;
+}
+
+.decoracion span{
+  position:absolute;
+  font-size:28px;
+  animation:caer 8s linear infinite;
+}
+
+@keyframes caer{
+  from{transform:translateY(-80px) rotate(0deg);}
+  to{transform:translateY(110vh) rotate(360deg);}
+}
+
+.inicio{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.caja{
+  text-align:center;
 }
 
 .sobre{
-font-size:90px;
-cursor:pointer;
-animation:flotar 1.5s infinite alternate;
+  width:270px;
+  height:170px;
+  background:#8fd0ff;
+  border:3px solid #3d7dca;
+  border-radius:12px;
+  position:relative;
+  margin:30px auto 15px;
+  box-shadow:0 0 25px #8fd0ff;
+  cursor:pointer;
 }
 
-@keyframes flotar{
-from{transform:translateY(0)}
-to{transform:translateY(-15px)}
+.sobre:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(145deg, transparent 49%, #3d7dca 50%, transparent 51%),
+    linear-gradient(35deg, transparent 49%, #3d7dca 50%, transparent 51%);
 }
 
-#razonBox{
-display:none;
+.sello{
+  position:absolute;
+  left:50%;
+  top:45%;
+  transform:translate(-50%,-50%);
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  background:#ffffff;
+  border:4px solid #e63946;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:38px;
+  z-index:2;
 }
 
-button{
-background:#7bbcff;
-color:white;
-border:none;
-padding:12px 22px;
-border-radius:25px;
-font-size:16px;
-cursor:pointer;
+.toca{
+  font-size:22px;
+  color:#315177;
+  font-style:italic;
 }
 
-p{
-font-size:20px;
+h1{
+  font-size:30px;
+  color:#315177;
+  text-shadow:0 2px 8px white;
+}
+
+.carta{
+  display:none;
+  max-width:430px;
+  margin:25px auto;
+  padding:35px 28px;
+  background:
+    repeating-linear-gradient(
+      #fffaf2 0px,
+      #fffaf2 37px,
+      #f3d9df 38px
+    );
+  border-left:3px solid #f2b8c6;
+  border-right:3px solid #f2b8c6;
+  box-shadow:0 0 25px rgba(0,0,0,.15);
+  color:#8a3f63;
+  font-size:22px;
+  line-height:1.75;
+  font-style:italic;
+}
+
+.carta h2{
+  text-align:center;
+  color:#315177;
+  font-size:28px;
+  margin-bottom:25px;
+}
+
+.razon{
+  margin-bottom:18px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<div class="fondo"></div>
 
-<h1>
-100 razones por las que te a𝓜o <br>
-𝓜i a𝓜or ✨💍
-</h1>
-
-<div id="inicio">
-<p>Toca el sobre 💌</p>
-<div class="sobre" onclick="abrir()">💌</div>
+<div class="decoracion">
+  <span style="left:8%; animation-delay:0s;">🕷️</span>
+  <span style="left:20%; animation-delay:1s;">🕸️</span>
+  <span style="left:35%; animation-delay:2s;">❤️</span>
+  <span style="left:50%; animation-delay:3s;">🕷️</span>
+  <span style="left:65%; animation-delay:4s;">🕸️</span>
+  <span style="left:80%; animation-delay:5s;">❤️</span>
+  <span style="left:90%; animation-delay:6s;">🕷️</span>
 </div>
 
-<div id="razonBox">
-<h2 id="titulo">Razón 1</h2>
-<p id="texto"></p>
-<button onclick="siguiente()">Siguiente 🩵</button>
+<div class="inicio" id="inicio">
+  <div class="caja">
+    <h1>
+      100 razones por las que te a𝓜o<br>
+      𝓜i a𝓜or ✨💍
+    </h1>
+
+    <div class="sobre" onclick="abrirCarta()">
+      <div class="sello">🕷️</div>
+    </div>
+
+    <div class="toca">✨ Toca el sobre para abrir ✨</div>
+  </div>
 </div>
+
+<div class="carta" id="carta">
+<h2>100 razones por las que te amo</h2>
+
+<div class="razon">1. Porque a tu lado siento que puedo ser yo misma.</div>
+<div class="razon">2. Porque puedes quitarme el estrés de todo el día.</div>
+<div class="razon">3. Porque me haces sentir la persona más protegida y segura del mundo.</div>
+<div class="razon">4. Porque con tenerte a ti lo tengo todo.</div>
+<div class="razon">5. Por los regalitos que me diste e hiciste que mi cumple sea especial.</div>
+<div class="razon">6. Porque me haces sentir hermosa incluso cuando tengo cara de dormida y despeinada.</div>
+<div class="razon">7. Porque contigo el futuro no me da miedo, me hace ilusión.</div>
+<div class="razon">8. Porque aunque tenga un día malo, me mandas un mensajito y me animas el día.</div>
+<div class="razon">9. Porque me haces sentir escuchada y valorada en cada conversación.</div>
+<div class="razon">10. Porque tu amor me da la paz mental que tanto necesitaba.</div>
+<div class="razon">11. Por tu buen corazón y las ganas que siempre tienes de ayudarme.</div>
+<div class="razon">12. Por lo inteligente que eres y lo mucho que aprendo de ti cada día.</div>
+<div class="razon">13. Por tu humor.</div>
+<div class="razon">14. Por la madurez con la que afrontas los problemas y las dificultades.</div>
+<div class="razon">15. Porque sé lo mucho que te esfuerzas por cumplir tus metas.</div>
+<div class="razon">16. Por tu sinceridad, incluso cuando la verdad es difícil de decir.</div>
+<div class="razon">17. Por lo tierno y detallista que eres cuando menos me lo espero.</div>
+<div class="razon">18. Por lo agradecido que eres.</div>
+<div class="razon">19. Por tu personalidad, que me encanta.</div>
+<div class="razon">20. Por la energía que le pones a las cosas que te gustan.</div>
+<div class="razon">21. Porque nos entendemos.</div>
+<div class="razon">22. Por lo segura que me haces sentir.</div>
+<div class="razon">23. Porque siempre te esfuerzas en aprender cosas nuevas.</div>
+<div class="razon">24. Por las canciones que ahora escucho y me recuerdan a ti.</div>
+<div class="razon">25. Por las risas.</div>
+<div class="razon">26. Por todas las noches que nos desvelamos hablando de lo que sea.</div>
+<div class="razon">27. Porque me relajas.</div>
+<div class="razon">28. Por las cosas que planeamos, que siempre me hacen ilusión y quiero que pasen ya.</div>
+<div class="razon">29. Porque hablar contigo es terapia.</div>
+<div class="razon">30. Por tus bíceps.</div>
+<div class="razon">31. Porque celebras mis logros como si fueran tuyos.</div>
+<div class="razon">32. Porque cuando yo estoy feliz, tú lo eres el doble.</div>
+<div class="razon">33. Porque respetas mis espacios y mis momentos a solas sin juzgarme.</div>
+<div class="razon">34. Porque sabemos arreglar nuestras diferencias hablando.</div>
+<div class="razon">35. Porque gracias a ti quiero ser la mujer perfecta para no perderte.</div>
+<div class="razon">36. Por tus hombros, espalda, abdomen, etc.</div>
+<div class="razon">37. Porque confío en ti.</div>
+<div class="razon">38. Porque respetas mis opiniones aunque a veces no estemos de acuerdo en todo.</div>
+<div class="razon">39. Porque haces que los días aburridos sean divertidos.</div>
+<div class="razon">40. Porque me demuestras mucho amor.</div>
+<div class="razon">41. Por lo mucho que te preocupas por mí.</div>
+<div class="razon">42. Por la manera en la que me cuidas.</div>
+<div class="razon">43. Porque te acuerdas de las pequeñas cosas que te cuento.</div>
+<div class="razon">44. Porque contigo lo quiero todo.</div>
+<div class="razon">45. Porque no quieres verme derramar ni una sola lágrima.</div>
+<div class="razon">46. Por tus besos.</div>
+<div class="razon">47. Por Nora, por Aziel y Yara.</div>
+<div class="razon">48. Por los videos que me mandas.</div>
+<div class="razon">49. Por la paciencia que me tienes cuando tardo mucho en hacer las cosas.</div>
+<div class="razon">50. Por el olor de tu perfume, jsjsjsjsjs.</div>
+<div class="razon">51. Por la manera en que me amas.</div>
+<div class="razon">52. Porque no te da vergüenza llorar o mostrar tus sentimientos delante mía.</div>
+<div class="razon">53. Por las voces cursis que hacemos cuando estamos solos.</div>
+<div class="razon">54. Por lo caballeroso y atento que eres con mi familia.</div>
+<div class="razon">55. Por todo lo que hicimos juntos.</div>
+<div class="razon">56. Porque me enseñaste a amar.</div>
+<div class="razon">57. Por la forma en que me pides mimos cuando estás cansado.</div>
+<div class="razon">58. Porque no me haces dudar.</div>
+<div class="razon">59. Por la atención que me das.</div>
+<div class="razon">60. Porque eres el novio más consentidor de todo el mundo.</div>
+<div class="razon">61. Por lo detallista que eres.</div>
+<div class="razon">62. Por el deseo que te tengo.</div>
+<div class="razon">63. Por lo comprensivo que eres.</div>
+<div class="razon">64. Por tu voz tan masculina.</div>
+<div class="razon">65. Por cómo me haces sentir una princesa delicada.</div>
+<div class="razon">66. Porque me mandas videos entrenando.</div>
+<div class="razon">67. Por lo guapo que te ves cuando te vistes de negro.</div>
+<div class="razon">68. Porque sabes cuando estoy mal.</div>
+<div class="razon">69. Por tus lunares.</div>
+<div class="razon">70. Amor, eres perfecto por dentro y por fuera.</div>
+<div class="razon">71. Porque cuando me imagino de aquí a diez años, te veo al lado mío.</div>
+<div class="razon">72. Porque me incluyes en todo aunque no esté ahí.</div>
+<div class="razon">73. Porque me muero de ganas de lograr mis metas junto a ti.</div>
+<div class="razon">74. Porque sé que vas a ser un apoyo increíble en cada nueva etapa de mi vida.</div>
+<div class="razon">75. Por la casa que construiremos, los viajes que haremos y todo lo que nos queda por delante.</div>
+<div class="razon">76. Porque eres el único con el que quiero estar en mi presente y en mi futuro.</div>
+<div class="razon">77. Porque aunque las cosas se pongan difíciles, no dejaremos de querernos.</div>
+<div class="razon">78. Porque no puedo desconfiar de ti.</div>
+<div class="razon">79. Porque sé lo que quiero contigo.</div>
+<div class="razon">80. Porque cada día que pasa mi amor por ti no se gasta, se multiplica.</div>
+<div class="razon">81. Porque me encanta que me expliques cosas.</div>
+<div class="razon">82. Por lo especial y único que eres.</div>
+<div class="razon">83. Por el silencio cómodo contigo.</div>
+<div class="razon">84. Por cómo me haces dormirme súper rápido.</div>
+<div class="razon">85. Porque además de mi novio eres mi mejor amigo.</div>
+<div class="razon">86. Por las pelis y series que tenemos planeado ver juntos.</div>
+<div class="razon">87. Porque no veo mi futuro sin ti.</div>
+<div class="razon">88. Por cómo me cuentas las cosas súper ilusionado.</div>
+<div class="razon">89. Porque me haces sentir mujer.</div>
+<div class="razon">90. Por la confianza que tenemos.</div>
+<div class="razon">91. Porque apareciste cuando menos lo esperaba, pero cuando más lo necesitaba.</div>
+<div class="razon">92. Porque gracias a ti tengo un mes favorito: abril.</div>
+<div class="razon">93. Porque no tengo ojos para nadie más.</div>
+<div class="razon">94. Porque eres la primera persona en la que pienso cuando tengo una buena o una mala noticia.</div>
+<div class="razon">95. Por tu paciencia infinita cuando me pongo insoportable.</div>
+<div class="razon">96. Porque valoro el tiempo que decides regalarme.</div>
+<div class="razon">97. Porque no eres rencoroso y siempre perdonas.</div>
+<div class="razon">98. Por los días que jugamos a cualquier juego y haces que todo sea súper divertido.</div>
+<div class="razon">99. Porque el primer día que hablamos me hiciste sonreír y nunca lo olvidaré.</div>
+<div class="razon">100. Porque a pesar de que sea difícil, tú decidiste quedarte conmigo.</div>
 
 </div>
 
 <script>
-
-let razones = [
-"Porque a tu lado siento que puedo ser yo misma",
-"Porque puedes quitarme el estrés de todo el día",
-"Porque me haces sentir la persona más protegida y segura del mundo",
-"Porque con tenerte a ti lo tengo todo",
-"Por los detalles que me haces"
-];
-
-let actual = 0;
-
-function abrir(){
-document.getElementById("inicio").style.display="none";
-document.getElementById("razonBox").style.display="block";
-mostrar();
+function abrirCarta(){
+  document.getElementById("inicio").style.display="none";
+  document.getElementById("carta").style.display="block";
+  window.scrollTo(0,0);
 }
-
-function mostrar(){
-document.getElementById("titulo").innerText =
-"Razón " + (actual + 1);
-
-document.getElementById("texto").innerText =
-razones[actual];
-}
-
-function siguiente(){
-
-actual++;
-
-if(actual < razones.length){
-mostrar();
-}else{
-document.getElementById("titulo").innerText =
-"💍 Fin 💍";
-
-document.getElementById("texto").innerText =
-"Y todavía me faltan muchas más razones para amarte. 🩵";
-}
-}
-
 </script>
 
 </body>
