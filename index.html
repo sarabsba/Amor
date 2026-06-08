@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+j<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -285,34 +285,54 @@ h1{
 
 <script>
 function abrirCarta(){
-  document.getElementById("inicio").style.display="none";
-  document.getElementById("carta").style.display="block";
-  lluvia();
-  window.scrollTo(0,0);
-}
 
-function lluvia(){
   const emojis = ["🕷️","🕸️","💙","❤️","✨","💍"];
 
-  for(let i=0;i<45;i++){
+  for(let i=0;i<40;i++){
+
     let e = document.createElement("div");
+
     e.innerText = emojis[Math.floor(Math.random()*emojis.length)];
+
     e.style.position = "fixed";
-    e.style.left = Math.random()*100 + "vw";
-    e.style.top = "-40px";
-    e.style.fontSize = (22 + Math.random()*18) + "px";
+    e.style.left = "50%";
+    e.style.top = "50%";
+    e.style.fontSize = (20 + Math.random()*20) + "px";
     e.style.zIndex = "9999";
     e.style.pointerEvents = "none";
-    e.style.animation = "caerEmoji 4s linear forwards";
+
+    let x = (Math.random()-0.5)*800;
+    let y = (Math.random()-0.5)*800;
+
+    e.animate([
+      {
+        transform:"translate(-50%,-50%) scale(1)",
+        opacity:1
+      },
+      {
+        transform:`translate(${x}px,${y}px) scale(0.5)`,
+        opacity:0
+      }
+    ],{
+      duration:1200,
+      easing:"ease-out"
+    });
+
     document.body.appendChild(e);
 
     setTimeout(()=>{
       e.remove();
-    },4000);
+    },1200);
   }
+
+  setTimeout(()=>{
+    document.getElementById("inicio").style.display="none";
+    document.getElementById("carta").style.display="block";
+    window.scrollTo(0,0);
+  },700);
+
 }
 </script>
-
 </body>
 </html>a</title>
 
@@ -588,7 +608,11 @@ h1{
 <div class="razon">100. Porque a pesar de que sea difícil, tú decidiste quedarte conmigo.</div>
 
 </div>
+<br><br>
 
+<div class="razon" style="text-align:center;font-size:30px;">
+𝓣𝓮 𝓪𝓜𝓸, 𝓶𝓲 𝓿𝓲𝓭𝓪 🫶🏻✨
+</div>
 <script>
 function abrirCarta(){
   document.getElementById("inicio").style.display="none";
