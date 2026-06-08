@@ -1,11 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100 razones por las que te amo 💍</title>
+
+<style>
+body{
+margin:0;
+min-height:100vh;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#eaf8ff,#c8e8ff,#b8dcff);
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.card{
+background:rgba(255,255,255,.9);
+padding:25px;
+border-radius:25px;
+width:85%;
+max-width:420px;
+box-shadow:0 0 20px rgba(168,216,255,.8);
+color:#3b4f7a;
+}
+
+.sobre{
+font-size:90px;
+cursor:pointer;
+animation:flotar 1.5s infinite alternate;
+}
+
+@keyframes flotar{
+from{transform:translateY(0)}
+to{transform:translateY(-15px)}
+}
+
+#razonBox{
+display:none;
+}
+
+button{
+background:#7bbcff;
+color:white;
+border:none;
+padding:12px 22px;
+border-radius:25px;
+font-size:16px;
+cursor:pointer;
+}
+
+p{
+font-size:20px;
+}
+</style>
+</head>
+
+<body>
+
 <div class="card">
 
 <h1>
-100 razones por las que te a𝓜o <br>
-𝓜i a𝓜or💍✨
+100 razones por las que te a𝓜o 💍<br>
+𝓜i a𝓜or ✨💍
 </h1>
 
 <div id="inicio">
 <p>Toca el sobre 💌</p>
 <div class="sobre" onclick="abrir()">💌</div>
 </div>
+
+<div id="razonBox">
+<h2 id="titulo">Razón 1</h2>
+<p id="texto"></p>
+<button onclick="siguiente()">Siguiente 🩵</button>
+</div>
+
+</div>
+
+<script>
+
+let razones = [
+"Porque a tu lado siento que puedo ser yo misma",
+"Porque puedes quitarme el estrés de todo el día",
+"Porque me haces sentir la persona más protegida y segura del mundo",
+"Porque con tenerte a ti lo tengo todo",
+"Por los detalles que me haces"
+];
+
+let actual = 0;
+
+function abrir(){
+document.getElementById("inicio").style.display="none";
+document.getElementById("razonBox").style.display="block";
+mostrar();
+}
+
+function mostrar(){
+document.getElementById("titulo").innerText =
+"Razón " + (actual + 1);
+
+document.getElementById("texto").innerText =
+razones[actual];
+}
+
+function siguiente(){
+
+actual++;
+
+if(actual < razones.length){
+mostrar();
+}else{
+document.getElementById("titulo").innerText =
+"💍 Fin 💍";
+
+document.getElementById("texto").innerText =
+"Y todavía me faltan muchas más razones para amarte. 🩵";
+}
+}
+
+</script>
+
+</body>
+</html>
